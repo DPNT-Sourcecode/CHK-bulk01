@@ -31,10 +31,38 @@ class CheckoutSolution:
                 "F": {
                     "price": 10,
                     "deals": [
-                        {"type":"BOGOF", "buy":2, "free_item":"B", "free_qty":1},
+                        {"type":"BOGOF", "buy":2, "free_item":"F", "free_qty":1},
                     ]
                     }
                 }
+    
+    def apply_multibuy(self, item, qty):
+        total = 0
+        deals = [deal for deal in self.price_table[item]['deals'] if deal['type'] == "multibuy"]
+
+        deals.sort(key=lambda d: d["qty"], reverse=True)
+
+        total = 0
+        for deal in deals:
+            total += (qty // deal['qty']) * deal["price"]
+            qty -= (qty // deal['qty']) * deal["qty"]
+        total += qty * self.price_table[item]
+        return total
+    
+    def apply_bogof(self, skus):
+        for item, details in self.price_table.items():
+            for deal in details["deals"]:
+                if deal["type"] != "BOGOF" or item not in skus:
+                    continue
+
+            requirement = deal["buy"]
+            
+            triggers = skus[item] // requirement
+
+            if deal["free_item"] in skus:
+                skus[deal["free_item"]] -= triggers
+                if skus[deal["free_item"]] < 0:
+                    skus[deal["free_item"]] = 0
     
     # skus = unicode string
     def checkout(self, skus):
@@ -54,21 +82,14 @@ class CheckoutSolution:
             else:
                 return -1
             
-        for (req, discount) in list(self.deals.items())[::-1]:
-            count = int(req[:-1])
-            item = req[-1]
-            if type(discount) == int:
-                total_cost += (checkout[item] // count) * discount
-                checkout[item]  = checkout[item] % count
-            else:
-                for i in range(checkout[item] // count):
-                    count = int(discount[:-1])
-                    item = discount[-1]
-                    checkout[item] += count
-                    if checkout[item] < 0:
-                        checkout[item] = 0
-
-        for (item, count) in checkout.items():
-            total_cost += count * self.price_table[item]
+        self.apply_bogof(skus)
+        for item, count in skus.items():
+            total_cost += self.apply_multibuy(item, count)
+        
         return total_cost
+    
+
+cs = CheckoutSolution()
+SKUs = ""
+print(cs.checkout(SKUs))
 
