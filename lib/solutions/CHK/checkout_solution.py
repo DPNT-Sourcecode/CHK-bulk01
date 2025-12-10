@@ -1,19 +1,34 @@
 
 class CheckoutSolution:
     price_table = {
-                "A": 50,
-                "B": 30, 
-                "C": 20,
-                "D": 15,
-                "E": 40
+                "A": {
+                    "price": 50, 
+                    "deals": [
+                        {"type":"multibuy", "qty":3, "price":130},
+                        {"type":"multibuy", "qty":5, "price":200}
+                    ]
+                    },
+                "B": {
+                    "price": 30, 
+                    "deals": [
+                        {"type":"multibuy", "qty":2, "price":45}
+                    ]
+                    },
+                "C": {
+                    "price": 20,
+                    "deals": []
+                },
+                "D": {
+                    "price": 15,
+                    "deals": []
+                    },
+                "E": {
+                    "price": 40,
+                    "deals": [
+                        {"type":"BOGOF", "buy":2, "price":45},
+                    ]
+                    }
                 }
-    
-    deals = {
-        "3A": 130,
-        "5A": 200,
-        "2B": 45,
-        "2E": "-1B"
-    }
     
     # skus = unicode string
     def checkout(self, skus):
