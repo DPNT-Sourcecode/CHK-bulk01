@@ -3,11 +3,11 @@ class CheckoutSolution:
     price_table = {
                 "A": {
                     "price": 50, 
-                    "deal": ''
+                    "deal": [3, 130]
                     },
                 "B": {
                     "price": 30, 
-                    "deal": ''
+                    "deal": [2, 45]
                     },
                 "C": {
                     "price": 20
@@ -28,14 +28,11 @@ class CheckoutSolution:
                 checkout[sku] = skus.count(sku)
 
         for (item, count) in checkout.items():
-            cost = 0
-            if self.price_table[item].deal:
-                cost += (count // ()) * () #TODO: finish
-                count = count % ()
+            if ['deal']:
+                total_cost += (count // ['deal'][0]) * ['deal'][1]
+                count = count % ['deal'][0]
 
-            cost += count * self.price_table[item].price
-             
-            total_cost += cost
+            total_cost += count * self.price_table[item].price
         return total_cost
 
 
@@ -51,9 +48,3 @@ print(cs.checkout(sku))
 # | C    | 20    |                |
 # | D    | 15    |                |
 # +------+-------+----------------+
-
-
-
-
-
-
