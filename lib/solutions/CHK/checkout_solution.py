@@ -61,11 +61,11 @@ class CheckoutSolution:
             },
         "M": {
             "price": 15,
-            "deals": [{"type":"BOGOF", "buy":3, "free_item":"M", "free_qty":}]
+            "deals": []
             },
         "N": {
             "price": 40,
-            "deals": []
+            "deals": [{"type":"BOGOF", "buy":3, "free_item":"M", "free_qty":1}]
             },
         "O": {
             "price": 10,
@@ -73,15 +73,15 @@ class CheckoutSolution:
             },
         "P": {
             "price": 50,
-            "deals": []
+            "deals": [{"type":"multibuy", "qty":5, "price":200}]
             },
         "Q": {
             "price": 30,
-            "deals": []
+            "deals": [{"type":"multibuy", "qty":3, "price":80}]
             },
         "R": {
             "price": 50,
-            "deals": []
+            "deals": [{"type":"BOGOF", "buy":3, "free_item":"Q", "free_qty":1}]
             },
         "S": {
             "price": 30,
@@ -93,11 +93,12 @@ class CheckoutSolution:
             },
         "U": {
             "price": 40,
-            "deals": []
+            "deals": [{"type":"BOGOF", "buy":3, "free_item":"U", "free_qty":1}]
             },
         "V": {
             "price": 50,
-            "deals": []
+            "deals": [{"type":"multibuy", "qty":2, "price":90},
+                      {"type":"multibuy", "qty":3, "price":130}]
             },
         "W": {
             "price": 20,
@@ -169,4 +170,5 @@ class CheckoutSolution:
             total_cost += self.apply_multibuy(item, count)
         
         return total_cost
+
 
