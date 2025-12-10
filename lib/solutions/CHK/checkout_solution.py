@@ -1,121 +1,121 @@
 
 class CheckoutSolution:
     price_table = {
-                "A": {
-                    "price": 50, 
-                    "deals": [
-                        {"type":"multibuy", "qty":3, "price":130},
-                        {"type":"multibuy", "qty":5, "price":200}
-                    ]
-                    },
-                "B": {
-                    "price": 30, 
-                    "deals": [
-                        {"type":"multibuy", "qty":2, "price":45}
-                    ]
-                    },
-                "C": {
-                    "price": 20,
-                    "deals": []
-                },
-                "D": {
-                    "price": 15,
-                    "deals": []
-                    },
-                "E": {
-                    "price": 40,
-                    "deals": [
-                        {"type":"BOGOF", "buy":2, "free_item":"B", "free_qty":1},
-                    ]
-                    },
-                "F": {
-                    "price": 10,
-                    "deals": [
-                        {"type":"BOGOF", "buy":2, "free_item":"F", "free_qty":1},
-                    ]
-                    },
-
-                "G": {
-                    "price": ,
-                    "deals": []
-                    }
-                },
-                "H": {
-                    "price": ,
-                    "deals": []
-                    },
-                "I": {
-                    "price": ,
-                    "deals": []
-                    },
-                "J": {
-                    "price": ,
-                    "deals": []
-                    },
-                "K": {
-                    "price": ,
-                    "deals": []
-                    },
-                "L": {
-                    "price": ,
-                    "deals": []
-                    },
-                "M": {
-                    "price": ,
-                    "deals": []
-                    },
-                "N": {
-                    "price": ,
-                    "deals": []
-                    },
-                "O": {
-                    "price": ,
-                    "deals": []
-                    },
-                "P": {
-                    "price": ,
-                    "deals": []
-                    },
-                "Q": {
-                    "price": ,
-                    "deals": []
-                    },
-                "R": {
-                    "price": ,
-                    "deals": []
-                    },
-                "S": {
-                    "price": ,
-                    "deals": []
-                    },
-                "T": {
-                    "price": ,
-                    "deals": []
-                    },
-                "U": {
-                    "price": ,
-                    "deals": []
-                    },
-                "V": {
-                    "price": ,
-                    "deals": []
-                    },
-                "W": {
-                    "price": ,
-                    "deals": []
-                    },
-                "X": {
-                    "price": ,
-                    "deals": []
-                    },
-                "Y": {
-                    "price": ,
-                    "deals": []
-                    },
-                "Z": {
-                    "price": ,
-                    "deals": []
-                    }
+        "A": {
+            "price": 50, 
+            "deals": [
+                {"type":"multibuy", "qty":3, "price":130},
+                {"type":"multibuy", "qty":5, "price":200}
+            ]
+            },
+        "B": {
+            "price": 30, 
+            "deals": [
+                {"type":"multibuy", "qty":2, "price":45}
+            ]
+            },
+        "C": {
+            "price": 20,
+            "deals": []
+        },
+        "D": {
+            "price": 15,
+            "deals": []
+            },
+        "E": {
+            "price": 40,
+            "deals": [
+                {"type":"BOGOF", "buy":2, "free_item":"B", "free_qty":1},
+            ]
+            },
+        "F": {
+            "price": 10,
+            "deals": [
+                {"type":"BOGOF", "buy":2, "free_item":"F", "free_qty":1},
+            ]
+            },
+        "G": {
+            "price": 20,
+            "deals": []
+            },
+        "H": {
+            "price": 10,
+            "deals": [{"type":"multibuy", "qty":5, "price":45},
+                      {"type":"multibuy", "qty":10, "price":80}]
+            },
+        "I": {
+            "price": 35,
+            "deals": []
+            },
+        "J": {
+            "price": 60,
+            "deals": []
+            },
+        "K": {
+            "price": 80,
+            "deals": [{"type":"multibuy", "qty":2, "price":150}]
+            },
+        "L": {
+            "price": 90,
+            "deals": []
+            },
+        "M": {
+            "price": 15,
+            "deals": [{"type":"BOGOF", "buy":3, "free_item":"M", "free_qty":}]
+            },
+        "N": {
+            "price": 40,
+            "deals": []
+            },
+        "O": {
+            "price": 10,
+            "deals": []
+            },
+        "P": {
+            "price": 50,
+            "deals": []
+            },
+        "Q": {
+            "price": 30,
+            "deals": []
+            },
+        "R": {
+            "price": 50,
+            "deals": []
+            },
+        "S": {
+            "price": 30,
+            "deals": []
+            },
+        "T": {
+            "price": 20,
+            "deals": []
+            },
+        "U": {
+            "price": 40,
+            "deals": []
+            },
+        "V": {
+            "price": 50,
+            "deals": []
+            },
+        "W": {
+            "price": 20,
+            "deals": []
+            },
+        "X": {
+            "price": 90,
+            "deals": []
+            },
+        "Y": {
+            "price": 10,
+            "deals": []
+            },
+        "Z": {
+            "price": 50,
+            "deals": []
+            }
+    }
     
     def apply_multibuy(self, item, qty):
         total = 0
@@ -169,3 +169,4 @@ class CheckoutSolution:
             total_cost += self.apply_multibuy(item, count)
         
         return total_cost
+
