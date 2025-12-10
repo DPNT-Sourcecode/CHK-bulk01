@@ -22,10 +22,10 @@ class CheckoutSolution:
                 }
     
     deals = {
-        "3A": "130",
-        "5A": "200",
-        "2B": "45",
-        
+        "3A": 130,
+        "5A": 200,
+        "2B": 45,
+        "2E": "-B"
     }
     
     # skus = unicode string
@@ -40,10 +40,15 @@ class CheckoutSolution:
             else:
                 return -1
 
+        print(list(self.deals.items())[::-1])
+
+        # for (req, discount) in self.deals.items()[::-1]:
+
+
         for (item, count) in checkout.items():
-            if self.price_table[item].get('deal'):
-                total_cost += (count // self.price_table[item]['deal'][0]) * self.price_table[item]['deal'][1]
-                count = count % self.price_table[item]['deal'][0]
+            # if self.price_table[item].get('deal'):
+            #     total_cost += (count // self.price_table[item]['deal'][0]) * self.price_table[item]['deal'][1]
+            #     count = count % self.price_table[item]['deal'][0]
 
             total_cost += count * self.price_table[item]['price']
         return total_cost
@@ -62,6 +67,3 @@ print(cs.checkout(sku))
 # | D    | 15    |                        |
 # | E    | 40    | 2E get one B free      |
 # +------+-------+------------------------+
-
-
-
