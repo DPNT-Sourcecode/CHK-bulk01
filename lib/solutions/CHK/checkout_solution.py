@@ -146,11 +146,39 @@ class CheckoutSolution:
                     if skus[deal["free_item"]] < 0:
                         skus[deal["free_item"]] = 0
         
+    def apply_group_discount(self, skus):
+        total = 0
+
+        group_discounts = []
+        for item, details in self.price_table.items():
+            for deal in details['deals']:
+                if deal["type"] == "group discount":
+                    group_discounts.append(deal)
+        
+        for discount in group_discounts:
+            pool = []
+            for sku in discount["group"]:
+                if sku in skus and skus[sku] > 0:
+                    pool.append((sku, self.price_table[sku]["price"], skus[sku]))
+            if not pool:
+                continue
+
+            items = []
+            for sku, price, count in pool:
+                items.extend([(sku, price)] * count)
+            items.sort(key=lambda x: x[1], reverse=True)
+            
+            sets = len(items) // deal["qty"]
+            total += sets * deal["price"]
+            
+            for i in range(sets*deal["qty"]):
+                sku, price = items.pop(0)
+                skus[sku] -= 1
+        return total
+
     
     # skus = unicode string
     def checkout(self, skus):
-        total_cost = 0
-
         checkout = {
                 "A": 0,
                 "B": 0, 
@@ -166,6 +194,7 @@ class CheckoutSolution:
                 return -1
             
         self.apply_bogof(checkout)
+        total_cost = self.apply_group_discount(checkout)
         for item, count in checkout.items():
             total_cost += self.apply_multibuy(item, count)
         
@@ -187,3 +216,4 @@ SKUs = ""
 print(cs.checkout(SKUs))
 # for (item, details) in cs.price_table.items():
 #     print(f'{item}\t{details['price']}, {", ".join(format_deals(item, details['deals']))}')
+
