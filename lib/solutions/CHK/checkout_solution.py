@@ -50,19 +50,22 @@ class CheckoutSolution:
         return total
     
     def apply_bogof(self, skus):
+        print(f'original skus: {skus}')
         for item, details in self.price_table.items():
             for deal in details["deals"]:
                 if deal["type"] != "BOGOF" or item not in skus:
                     continue
 
-            requirement = deal["buy"]
-            
-            triggers = skus[item] // requirement
-
-            if deal["free_item"] in skus:
-                skus[deal["free_item"]] -= triggers
-                if skus[deal["free_item"]] < 0:
-                    skus[deal["free_item"]] = 0
+                if deal["free_item"] == item:
+                    total_combo = deal["buy"] + deal["free_qty"]
+                    combos = skus[item] // total_combo
+                    skus[item] -= combos * deal["free_qty"]
+                elif deal["free_item"] in skus:
+                    skus[deal["free_item"]] -= (skus[item] // deal["buy"])
+                    if skus[deal["free_item"]] < 0:
+                        skus[deal["free_item"]] = 0
+        print(f'final skus: {skus}')
+        
     
     # skus = unicode string
     def checkout(self, skus):
@@ -82,14 +85,13 @@ class CheckoutSolution:
             else:
                 return -1
             
-        self.apply_bogof(skus)
-        for item, count in skus.items():
+        self.apply_bogof(checkout)
+        for item, count in checkout.items():
             total_cost += self.apply_multibuy(item, count)
         
         return total_cost
     
 
 cs = CheckoutSolution()
-SKUs = ""
+SKUs = "AAABBBCCDDEEFFF"
 print(cs.checkout(SKUs))
-
