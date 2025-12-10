@@ -46,11 +46,10 @@ class CheckoutSolution:
         for deal in deals:
             total += (qty // deal['qty']) * deal["price"]
             qty -= (qty // deal['qty']) * deal["qty"]
-        total += qty * self.price_table[item]
+        total += qty * self.price_table[item]['price']
         return total
     
     def apply_bogof(self, skus):
-        print(f'original skus: {skus}')
         for item, details in self.price_table.items():
             for deal in details["deals"]:
                 if deal["type"] != "BOGOF" or item not in skus:
@@ -64,7 +63,6 @@ class CheckoutSolution:
                     skus[deal["free_item"]] -= (skus[item] // deal["buy"])
                     if skus[deal["free_item"]] < 0:
                         skus[deal["free_item"]] = 0
-        print(f'final skus: {skus}')
         
     
     # skus = unicode string
@@ -90,8 +88,3 @@ class CheckoutSolution:
             total_cost += self.apply_multibuy(item, count)
         
         return total_cost
-    
-
-cs = CheckoutSolution()
-SKUs = "AAABBBCCDDEEFFF"
-print(cs.checkout(SKUs))
