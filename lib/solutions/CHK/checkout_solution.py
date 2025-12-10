@@ -27,10 +27,14 @@ class CheckoutSolution:
             if sku in self.price_table.keys():
                 checkout[sku] = skus.count(sku)
 
-        for (item, count) in skus.items():
-            cost = count * self.price_table[item].price
+        for (item, count) in checkout.items():
+            cost = 0
             if self.price_table[item].deal:
-                () # handle this 
+                cost += (count // ()) * () #TODO: finish
+                count = count % ()
+
+            cost += count * self.price_table[item].price
+             
             total_cost += cost
         return total_cost
 
@@ -47,6 +51,7 @@ print(cs.checkout(sku))
 # | C    | 20    |                |
 # | D    | 15    |                |
 # +------+-------+----------------+
+
 
 
 
