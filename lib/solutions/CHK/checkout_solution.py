@@ -3,11 +3,11 @@ class CheckoutSolution:
     price_table = {
                 "A": {
                     "price": 50, 
-                    "deal": [3, 130]
+                    "deal": [[3, 130]]
                     },
                 "B": {
                     "price": 30, 
-                    "deal": [2, 45]
+                    "deal": [[2, 45]]
                     },
                 "C": {
                     "price": 20
@@ -36,4 +36,5 @@ class CheckoutSolution:
 
             total_cost += count * self.price_table[item]['price']
         return total_cost
+
 
