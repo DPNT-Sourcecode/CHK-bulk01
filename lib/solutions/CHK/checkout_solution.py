@@ -3,7 +3,8 @@ class CheckoutSolution:
     price_table = {
                 "A": {
                     "price": 50, 
-                    "deal": [[3, 130]]
+                    "deal": [[3, 130],
+                             [5, 200]]
                     },
                 "B": {
                     "price": 30, 
@@ -14,6 +15,9 @@ class CheckoutSolution:
                 },
                 "D": {
                     "price": 15
+                    },
+                "E": {
+                    "price": 40
                     }
                 }
     
@@ -36,5 +40,20 @@ class CheckoutSolution:
 
             total_cost += count * self.price_table[item]['price']
         return total_cost
+
+
+cs = CheckoutSolution()
+sku = "ABCDAEBCDABE"
+print(cs.checkout(sku))
+
+# +------+-------+------------------------+
+# | Item | Price | Special offers         |
+# +------+-------+------------------------+
+# | A    | 50    | 3A for 130, 5A for 200 |
+# | B    | 30    | 2B for 45              |
+# | C    | 20    |                        |
+# | D    | 15    |                        |
+# | E    | 40    | 2E get one B free      |
+# +------+-------+------------------------+
 
 
