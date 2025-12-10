@@ -26,7 +26,7 @@ class CheckoutSolution:
                 checkout[sku] = skus.count(sku)
             else:
                 return -1
-
+            
         for (req, discount) in list(self.deals.items())[::-1]:
             count = int(req[:-1])
             item = req[-1]
@@ -37,28 +37,10 @@ class CheckoutSolution:
                 for i in range(checkout[item] // count):
                     count = int(discount[:-1])
                     item = discount[-1]
-                    checkout[item] -= count
+                    checkout[item] += count
                     if checkout[item] < 0:
                         checkout[item] = 0
-
-        print(f'total_cost: {total_cost}')
-        print(f'checkout: {checkout}')
 
         for (item, count) in checkout.items():
             total_cost += count * self.price_table[item]
         return total_cost
-
-
-cs = CheckoutSolution()
-sku = "ABCDAEBCDABE"
-print(cs.checkout(sku))
-
-# +------+-------+------------------------+
-# | Item | Price | Special offers         |
-# +------+-------+------------------------+
-# | A    | 50    | 3A for 130, 5A for 200 |
-# | B    | 30    | 2B for 45              |
-# | C    | 20    |                        |
-# | D    | 15    |                        |
-# | E    | 40    | 2E get one B free      |
-# +------+-------+------------------------+
