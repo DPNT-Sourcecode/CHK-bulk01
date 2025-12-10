@@ -21,6 +21,13 @@ class CheckoutSolution:
                     }
                 }
     
+    deals = {
+        "3A": "130",
+        "5A": "200",
+        "2B": "45",
+        
+    }
+    
     # skus = unicode string
     def checkout(self, skus):
         total_cost = 0
@@ -55,5 +62,6 @@ print(cs.checkout(sku))
 # | D    | 15    |                        |
 # | E    | 40    | 2E get one B free      |
 # +------+-------+------------------------+
+
 
 
