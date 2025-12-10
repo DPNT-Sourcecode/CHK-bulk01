@@ -53,7 +53,7 @@ class CheckoutSolution:
             },
         "K": {
             "price": 70,
-            "deals": [{"type":"multibuy", "qty":2, "price":150}]
+            "deals": [{"type":"multibuy", "qty":2, "price":120}]
             },
         "L": {
             "price": 90,
@@ -85,11 +85,11 @@ class CheckoutSolution:
             },
         "S": {
             "price": 20,
-            "deals": []
+            "deals": [{"type":"group discount", "qty":3, "group":["S","T","X","Y","Z"], "price": 45}]
             },
         "T": {
             "price": 20,
-            "deals": []
+            "deals": [{"type":"group discount", "qty":3, "group":["S","T","X","Y","Z"], "price": 45}]
             },
         "U": {
             "price": 40,
@@ -106,15 +106,15 @@ class CheckoutSolution:
             },
         "X": {
             "price": 17,
-            "deals": []
+            "deals": [{"type":"group discount", "qty":3, "group":["S","T","X","Y","Z"], "price": 45}]
             },
         "Y": {
             "price": 20,
-            "deals": []
+            "deals": [{"type":"group discount", "qty":3, "group":["S","T","X","Y","Z"], "price": 45}]
             },
         "Z": {
             "price": 21,
-            "deals": []
+            "deals": [{"type":"group discount", "qty":3, "group":["S","T","X","Y","Z"], "price": 45}]
             }
     }
     
