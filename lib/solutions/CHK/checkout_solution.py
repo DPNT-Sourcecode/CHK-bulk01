@@ -19,7 +19,13 @@ class CheckoutSolution:
     def checkout(self, skus):
         total_cost = 0
 
-        checkout = {}
+        checkout = {
+                "A": 0,
+                "B": 0, 
+                "C": 0,
+                "D": 0,
+                "E": 0
+                }
 
         for sku in list(skus):
             if sku in self.price_table.keys():
@@ -44,3 +50,4 @@ class CheckoutSolution:
         for (item, count) in checkout.items():
             total_cost += count * self.price_table[item]
         return total_cost
+
