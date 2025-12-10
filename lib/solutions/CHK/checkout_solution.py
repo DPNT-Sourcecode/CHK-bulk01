@@ -28,23 +28,9 @@ class CheckoutSolution:
                 checkout[sku] = skus.count(sku)
 
         for (item, count) in checkout.items():
-            if ['deal']:
-                total_cost += (count // ['deal'][0]) * ['deal'][1]
-                count = count % ['deal'][0]
+            if self.price_table[item].get('deal'):
+                total_cost += (count // self.price_table[item]['deal'][0]) * self.price_table[item]['deal'][1]
+                count = count % self.price_table[item]['deal'][0]
 
-            total_cost += count * self.price_table[item].price
+            total_cost += count * self.price_table[item]['price']
         return total_cost
-
-
-cs = CheckoutSolution()
-sku = "ABCDABCDAB"
-print(cs.checkout(sku))
-
-# +------+-------+----------------+
-# | Item | Price | Special offers |
-# +------+-------+----------------+
-# | A    | 50    | 3A for 130     |
-# | B    | 30    | 2B for 45      |
-# | C    | 20    |                |
-# | D    | 15    |                |
-# +------+-------+----------------+
