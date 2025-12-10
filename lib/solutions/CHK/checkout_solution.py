@@ -33,8 +33,89 @@ class CheckoutSolution:
                     "deals": [
                         {"type":"BOGOF", "buy":2, "free_item":"F", "free_qty":1},
                     ]
+                    },
+
+                "G": {
+                    "price": ,
+                    "deals": []
                     }
-                }
+                },
+                "H": {
+                    "price": ,
+                    "deals": []
+                    },
+                "I": {
+                    "price": ,
+                    "deals": []
+                    },
+                "J": {
+                    "price": ,
+                    "deals": []
+                    },
+                "K": {
+                    "price": ,
+                    "deals": []
+                    },
+                "L": {
+                    "price": ,
+                    "deals": []
+                    },
+                "M": {
+                    "price": ,
+                    "deals": []
+                    },
+                "N": {
+                    "price": ,
+                    "deals": []
+                    },
+                "O": {
+                    "price": ,
+                    "deals": []
+                    },
+                "P": {
+                    "price": ,
+                    "deals": []
+                    },
+                "Q": {
+                    "price": ,
+                    "deals": []
+                    },
+                "R": {
+                    "price": ,
+                    "deals": []
+                    },
+                "S": {
+                    "price": ,
+                    "deals": []
+                    },
+                "T": {
+                    "price": ,
+                    "deals": []
+                    },
+                "U": {
+                    "price": ,
+                    "deals": []
+                    },
+                "V": {
+                    "price": ,
+                    "deals": []
+                    },
+                "W": {
+                    "price": ,
+                    "deals": []
+                    },
+                "X": {
+                    "price": ,
+                    "deals": []
+                    },
+                "Y": {
+                    "price": ,
+                    "deals": []
+                    },
+                "Z": {
+                    "price": ,
+                    "deals": []
+                    }
     
     def apply_multibuy(self, item, qty):
         total = 0
