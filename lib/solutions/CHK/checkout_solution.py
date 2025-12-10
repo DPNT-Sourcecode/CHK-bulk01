@@ -50,4 +50,3 @@ class CheckoutSolution:
         for (item, count) in checkout.items():
             total_cost += count * self.price_table[item]
         return total_cost
-
