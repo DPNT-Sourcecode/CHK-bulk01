@@ -1,28 +1,35 @@
 
 class CheckoutSolution:
-
+    price_table = {
+                "A": {
+                    "price": 50, 
+                    "deal": ''
+                    },
+                "B": {
+                    "price": 30, 
+                    "deal": ''
+                    },
+                "C": {
+                    "price": 20
+                },
+                "D": {
+                    "price": 15
+                    }
+                }
+    
     # skus = unicode string
     def checkout(self, skus):
-        price_table = {
-            "A": {
-                "price": 50, 
-                "deal": ''
-                },
-            "B": {
-                "price": 30, 
-                "deal": ''
-                },
-            "C": {
-                "price": 20
-            },
-            "D": {
-                "price": 15
-                }
-            }
         total_cost = 0
 
-        skus = [skus.count(sku) for sku in list(skus) if sku in price_table.keys()]
-        print(skus)
+        checkout = {}
+
+        for sku in list(skus):
+            if sku in self.price_table.keys():
+                checkout[sku] = skus.count(sku)
+
+        for (item, count) in skus.items():
+            if self.price_table[item].deal:
+                
 
         return total_cost
 
@@ -39,6 +46,7 @@ print(cs.checkout(sku))
 # | C    | 20    |                |
 # | D    | 15    |                |
 # +------+-------+----------------+
+
 
 
 
