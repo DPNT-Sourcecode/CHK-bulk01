@@ -212,7 +212,7 @@ class CheckoutSolution:
 
 
 cs = CheckoutSolution()
-SKUs = ""
+SKUs = "AAABBSXXYY"
 print(cs.checkout(SKUs))
 # for (item, details) in cs.price_table.items():
 #     print(f'{item}\t{details['price']}, {", ".join(format_deals(item, details['deals']))}')
