@@ -1,31 +1,18 @@
 
 class CheckoutSolution:
     price_table = {
-                "A": {
-                    "price": 50, 
-                    "deal": [[3, 130],
-                             [5, 200]]
-                    },
-                "B": {
-                    "price": 30, 
-                    "deal": [[2, 45]]
-                    },
-                "C": {
-                    "price": 20
-                },
-                "D": {
-                    "price": 15
-                    },
-                "E": {
-                    "price": 40
-                    }
+                "A": 50,
+                "B": 30, 
+                "C": 20,
+                "D": 15,
+                "E": 40
                 }
     
     deals = {
         "3A": 130,
         "5A": 200,
         "2B": 45,
-        "2E": "-B"
+        "2E": "-1B"
     }
     
     # skus = unicode string
@@ -40,17 +27,25 @@ class CheckoutSolution:
             else:
                 return -1
 
-        print(list(self.deals.items())[::-1])
+        for (req, discount) in list(self.deals.items())[::-1]:
+            count = int(req[:-1])
+            item = req[-1]
+            if type(discount) == int:
+                total_cost += (checkout[item] // count) * discount
+                checkout[item]  = checkout[item] % count
+            else:
+                for i in range(checkout[item] // count):
+                    count = int(discount[:-1])
+                    item = discount[-1]
+                    checkout[item] -= count
+                    if checkout[item] < 0:
+                        checkout[item] = 0
 
-        # for (req, discount) in self.deals.items()[::-1]:
-
+        print(f'total_cost: {total_cost}')
+        print(f'checkout: {checkout}')
 
         for (item, count) in checkout.items():
-            # if self.price_table[item].get('deal'):
-            #     total_cost += (count // self.price_table[item]['deal'][0]) * self.price_table[item]['deal'][1]
-            #     count = count % self.price_table[item]['deal'][0]
-
-            total_cost += count * self.price_table[item]['price']
+            total_cost += count * self.price_table[item]
         return total_cost
 
 
