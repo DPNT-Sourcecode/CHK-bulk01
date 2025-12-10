@@ -170,14 +170,5 @@ class CheckoutSolution:
             total_cost += self.apply_multibuy(item, count)
         
         return total_cost
-    
-def format_deals(deals):
-    new_deals
-    for deal in deals
-
-
-cs = CheckoutSolution()
-for (item, details) in cs.price_table.items():
-    print(f'{item}\t{details['price']}, {", ".join(format_deals(details['deals']))}}')
 
 
