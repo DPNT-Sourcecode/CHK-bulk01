@@ -196,21 +196,3 @@ class CheckoutSolution:
             total_cost += self.apply_multibuy(item, count)
         
         return total_cost
-    
-# def format_deals(item, deals):
-#     new_deals = []
-#     for deal in deals:
-#         if deal["type"] == "multibuy":
-#             new_deals.append(str(deal['qty'])+item+' for '+str(deal['price']))
-#         else:
-#             new_deals.append(str(deal['buy'])+item+" get "+str(deal["free_qty"])+deal["free_item"]+" free")
-#     return new_deals
-
-
-
-cs = CheckoutSolution()
-SKUs = "AAABBCSXXYY"
-print(cs.checkout(SKUs))
-# for (item, details) in cs.price_table.items():
-#     print(f'{item}\t{details['price']}, {", ".join(format_deals(item, details['deals']))}')
-
