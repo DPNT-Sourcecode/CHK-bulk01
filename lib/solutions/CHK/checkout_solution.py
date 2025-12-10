@@ -52,7 +52,7 @@ class CheckoutSolution:
             "deals": []
             },
         "K": {
-            "price": 80,
+            "price": 70,
             "deals": [{"type":"multibuy", "qty":2, "price":150}]
             },
         "L": {
@@ -84,7 +84,7 @@ class CheckoutSolution:
             "deals": [{"type":"BOGOF", "buy":3, "free_item":"Q", "free_qty":1}]
             },
         "S": {
-            "price": 30,
+            "price": 20,
             "deals": []
             },
         "T": {
@@ -105,15 +105,15 @@ class CheckoutSolution:
             "deals": []
             },
         "X": {
-            "price": 90,
+            "price": 17,
             "deals": []
             },
         "Y": {
-            "price": 10,
+            "price": 20,
             "deals": []
             },
         "Z": {
-            "price": 50,
+            "price": 21,
             "deals": []
             }
     }
@@ -170,3 +170,20 @@ class CheckoutSolution:
             total_cost += self.apply_multibuy(item, count)
         
         return total_cost
+    
+# def format_deals(item, deals):
+#     new_deals = []
+#     for deal in deals:
+#         if deal["type"] == "multibuy":
+#             new_deals.append(str(deal['qty'])+item+' for '+str(deal['price']))
+#         else:
+#             new_deals.append(str(deal['buy'])+item+" get "+str(deal["free_qty"])+deal["free_item"]+" free")
+#     return new_deals
+
+
+
+cs = CheckoutSolution()
+SKUs = ""
+print(cs.checkout(SKUs))
+# for (item, details) in cs.price_table.items():
+#     print(f'{item}\t{details['price']}, {", ".join(format_deals(item, details['deals']))}')
