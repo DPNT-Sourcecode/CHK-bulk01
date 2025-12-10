@@ -21,10 +21,15 @@ class CheckoutSolution:
             }
         total_cost = 0
 
-        skus = [skus.count(sku) for sku in skus.split() if sku in price_table.keys()]
+        skus = [skus.count(sku) for sku in list(skus) if sku in price_table.keys()]
+        print(skus)
 
         return total_cost
 
+
+cs = CheckoutSolution()
+sku = "ABCDABCDAB"
+print(cs.checkout(sku))
 
 # +------+-------+----------------+
 # | Item | Price | Special offers |
@@ -34,5 +39,6 @@ class CheckoutSolution:
 # | C    | 20    |                |
 # | D    | 15    |                |
 # +------+-------+----------------+
+
 
 
