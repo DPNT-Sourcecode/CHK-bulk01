@@ -147,6 +147,7 @@ class CheckoutSolution:
                         skus[deal["free_item"]] = 0
         
     def apply_group_discount(self, skus):
+        print(f'original skus: {skus}')
         total = 0
 
         group_discounts = []
@@ -174,18 +175,14 @@ class CheckoutSolution:
             for i in range(sets*deal["qty"]):
                 sku, price = items.pop(0)
                 skus[sku] -= 1
+        print(f'final skus: {skus}')
+
         return total
 
     
     # skus = unicode string
     def checkout(self, skus):
-        checkout = {
-                "A": 0,
-                "B": 0, 
-                "C": 0,
-                "D": 0,
-                "E": 0
-                }
+        checkout = {}
 
         for sku in list(skus):
             if sku in self.price_table.keys():
@@ -212,7 +209,7 @@ class CheckoutSolution:
 
 
 cs = CheckoutSolution()
-SKUs = "AAABBSXXYY"
+SKUs = "AAABBCSXXYY"
 print(cs.checkout(SKUs))
 # for (item, details) in cs.price_table.items():
 #     print(f'{item}\t{details['price']}, {", ".join(format_deals(item, details['deals']))}')
