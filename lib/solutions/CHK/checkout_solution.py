@@ -25,7 +25,13 @@ class CheckoutSolution:
                 "E": {
                     "price": 40,
                     "deals": [
-                        {"type":"BOGOF", "buy":2, "price":45},
+                        {"type":"BOGOF", "buy":2, "free_item":"B", "free_qty":1},
+                    ]
+                    },
+                "F": {
+                    "price": 10,
+                    "deals": [
+                        {"type":"BOGOF", "buy":2, "free_item":"B", "free_qty":1},
                     ]
                     }
                 }
@@ -65,3 +71,4 @@ class CheckoutSolution:
         for (item, count) in checkout.items():
             total_cost += count * self.price_table[item]
         return total_cost
+
