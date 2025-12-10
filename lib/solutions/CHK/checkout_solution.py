@@ -26,7 +26,8 @@ class CheckoutSolution:
         for sku in list(skus):
             if sku in self.price_table.keys():
                 checkout[sku] = skus.count(sku)
-            return -1
+            else:
+                return -1
 
         for (item, count) in checkout.items():
             if self.price_table[item].get('deal'):
@@ -35,3 +36,4 @@ class CheckoutSolution:
 
             total_cost += count * self.price_table[item]['price']
         return total_cost
+
